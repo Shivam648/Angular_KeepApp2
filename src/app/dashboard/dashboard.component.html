@@ -1,0 +1,30 @@
+<app-header-component></app-header-component>
+<div class="dashboard-container">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Take a note
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form class="example-form">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input [(ngModel)]="newNote.title" matInput placeholder="Title" name="title">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Note</mat-label>
+        <textarea matInput placeholder="Text" name="text" [(ngModel)]="newNote.text"></textarea>
+      </mat-form-field>
+      <button mat-button (click)="addNote()">Done</button>
+    </form>
+  </mat-expansion-panel>
+
+  <div class="notes-container">
+    <mat-card *ngFor="let note of notes">
+      <mat-card-title>{{ note.title }}</mat-card-title>
+      <mat-card-content>{{ note.text }}</mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="error-message" *ngIf="errMessage">{{ errMessage }}</div>
+</div>
